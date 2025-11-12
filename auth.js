@@ -1,16 +1,23 @@
-import crypto from 'crypto';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 const safeCompare = (a = '', b = '') => {
   if (typeof a !== 'string' || typeof b !== 'string') return false;
-  const aBuffer = Buffer.from(a);
-  const bBuffer = Buffer.from(b);
-  if (aBuffer.length !== bBuffer.length) return false;
-  return crypto.timingSafeEqual(aBuffer, bBuffer);
+  if (a.length !== b.length) return false;
+
+  let mismatch = 0;
+  for (let i = 0; i < a.length; i += 1) {
+    mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return mismatch === 0;
 };
 
-const handler = NextAuth({
+export const {
+  handlers,
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
   session: { strategy: 'jwt' },
   secret: process.env.NEXTAUTH_SECRET,
   pages: { signIn: '/login' },
@@ -63,5 +70,3 @@ const handler = NextAuth({
     },
   },
 });
-
-export default handler;
