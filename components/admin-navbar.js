@@ -11,26 +11,24 @@ export default function AdminNavbar() {
   };
 
   return (
-    <header className="w-full bg-white border-b border-gray-200 shadow-sm">
+    <header className="w-full bg-[var(--color-cream)] border-b-2 border-[var(--color-black)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4 flex-wrap">
           <Link href="/" className="flex items-center gap-3 group">
             <span className="inline-flex items-center gap-2">
-              <Image src="/clockedoff-logo.gif" alt="ClockedOff logo" width={150} height={65} priority />
-              <span className="text-lg font-semibold text-gray-900 tracking-tight group-hover:text-blue-600 transition">Admin</span>
+              <Image src="/clockedoff-logo.gif" alt="ClockedOff logo" width={150} height={60} priority />
+              <span className="text-xl font-semibold tracking-tight group-hover:text-[var(--color-red)] transition-colors">Admin</span>
             </span>
           </Link>
-
+          <span className="text-sm text-[var(--color-black)]">
+            Signed in as <span className="font-bold">{displayName}</span>
+          </span>
         </div>
         <div className="flex items-center gap-3 md:justify-end w-full md:w-auto">
-        <span className="text-sm text-gray-500">
-            Signed in as <span className="font-medium text-gray-800">{displayName}</span>
-          </span>
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className="px-3 py-1.5 rounded-md bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition"
-          >
+          <Link href="/" className="admin-button secondary text-xs sm:text-sm">
+            Home
+          </Link>
+          <button type="button" onClick={handleSignOut} className="admin-button text-xs sm:text-sm">
             Log Out
           </button>
         </div>

@@ -42,41 +42,38 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
-        <h1 className="text-2xl font-semibold text-center text-gray-900 mb-6">ClockedOff Admin</h1>
-        <p className="text-center text-gray-500 mb-8">Sign in with your admin credentials to continue.</p>
-        {error && <p className="mb-4 text-sm text-red-600 text-center">{error}</p>}
+    <div className="min-h-screen flex items-center justify-center bg-[var(--color-cream)] px-4">
+      <div className="w-full max-w-md admin-surface p-8 bg-white">
+        <h1 className="text-3xl font-bold text-center text-[var(--color-black)] uppercase mb-4">ClockedOff Admin</h1>
+        <div className="admin-divider mb-6" />
+        <p className="text-center text-[var(--color-black)]/70 mb-6 uppercase text-xs tracking-[0.3em]">Authorized Access Only</p>
+        {error && <p className="mb-4 text-sm text-[var(--color-red)] text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <label className="block text-xs uppercase tracking-[0.3em] text-[var(--color-black)] mb-2">Username</label>
             <input
               type="text"
               name="username"
               autoComplete="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-2 border-[var(--color-black)] bg-[var(--color-cream)] px-3 py-2 focus:outline-none focus:border-[var(--color-red)]"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-xs uppercase tracking-[0.3em] text-[var(--color-black)] mb-2">Password</label>
             <input
               type="password"
               name="password"
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-2 border-[var(--color-black)] bg-[var(--color-cream)] px-3 py-2 focus:outline-none focus:border-[var(--color-red)]"
               required
             />
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition disabled:opacity-50"
-          >
+          <button type="submit" disabled={loading} className="admin-button w-full disabled:opacity-70">
             {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
