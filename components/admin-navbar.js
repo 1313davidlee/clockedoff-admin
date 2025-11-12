@@ -16,7 +16,7 @@ export default function AdminNavbar() {
         <div className="flex items-center gap-4 flex-wrap">
           <Link href="/" className="flex items-center gap-3 group">
             <span className="inline-flex items-center gap-2">
-              <Image src="/clockedoff-logo.gif" alt="ClockedOff logo" width={150} height={60} priority />
+              <Image src="/public/clockedoff-logo.gif" alt="ClockedOff logo" width={150} height={60} priority />
               <span className="text-xl font-semibold tracking-tight group-hover:text-[var(--color-red)] transition-colors">Admin</span>
             </span>
           </Link>
